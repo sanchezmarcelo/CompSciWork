@@ -62,50 +62,30 @@ public class Recursion {
 				int oneThird = (((borderTwo - borderOne)/3));
 				int twoThird = borderOne + (oneThird + oneThird);
 				
-				//------------for debugging--------------------//
-//				System.out.println("initialIndex " + initialIndex);							
-//				System.out.println("borderOne " + borderOne);
-//				System.out.println("borderTwo " + borderTwo);
-//				System.out.println("arraySize " + arraySize);
-//				System.out.println("oneThird " + oneThird);
-//				System.out.println("twoThird " + twoThird);			
-//				System.out.println("________________________");	
-				
 				if(target == array[oneThird]) {
 					System.out.println("Leftmost occurrence of " + target + " @ index [" + oneThird + "]");
-					//System.out.println("Recursing the first 1/3...");
-					//------debugging
-					//return oneThird;
 					return TrinarySearch(array, target, (initialIndex) + 1, oneThird);
 				}
 				if(target == array[twoThird]) {
 					System.out.println("Leftmost occurrence of " + target + " @ index [" + twoThird + "]");
-					//System.out.println("Recursing the first 2/3...");
-					//--------debugging
-					//return twoThird;
 					return TrinarySearch(array, target, (initialIndex) + 1, twoThird);
 				}
 				if(target == array[borderOne]) {
 					return borderOne;
 				}
 				if(target == array[borderTwo]) {
-					//return borderTwo;
 					System.out.println("Leftmost occurrence of " + target + " @ index @ [" + borderTwo + "]");
-//					System.out.println("Recursing the array from the beginning");
 					return TrinarySearch(array, target, (initialIndex) + 1, (borderTwo - 1));
 				}									
 						if(target < array[oneThird]) {
-						//	System.out.println("less than 1/3");
 							return TrinarySearch(array, target, (initialIndex) + 1, oneThird);
 						}
 						
 						if(array[oneThird] < target & target < array[twoThird]) {
-						//	System.out.println("1/3 < target < 2/3");
 							return TrinarySearch(array, target, (initialIndex) + 1, twoThird);
 						}
 						
 						if(target > array[twoThird]) {
-						//	System.out.println("more than 2/3");
 							return TrinarySearch(array, target, (twoThird) + 1, (arraySize));
 						}	
 			}
